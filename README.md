@@ -290,5 +290,3 @@ App
 - MDN Web Docs (localStorage): https://developer.mozilla.org/pt-BR/docs/Web/API/Window/localStorage
 
 ---
-
-Desenvolvido por **Lucas** como trabalho acadêmico.
