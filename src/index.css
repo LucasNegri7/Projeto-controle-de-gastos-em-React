@@ -1,0 +1,105 @@
+:root {
+  --fundo: #f1f5f9;
+  --painel: #ffffff;
+  --texto: #0f172a;
+  --suave: #64748b;
+  --borda: #e2e8f0;
+  --primaria: #0f766e;
+  --receita: #16a34a;
+  --despesa: #dc2626;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--texto);
+  background: var(--fundo);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
+
+.cabecalho h1 { margin: 0; font-size: 1.8rem; }
+.cabecalho p { margin: 4px 0 20px; color: var(--suave); }
+
+/* Cartões de resumo */
+.resumo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+.cartao {
+  background: var(--painel); border-radius: 12px; padding: 16px 20px;
+  border-left: 5px solid var(--borda); box-shadow: 0 1px 3px rgb(0 0 0 / 0.06);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.cartao span { color: var(--suave); font-size: 0.9rem; }
+.cartao strong { font-size: 1.5rem; }
+.cartao-receita { border-left-color: var(--receita); }
+.cartao-despesa { border-left-color: var(--despesa); }
+.cartao-saldo { border-left-color: var(--primaria); }
+.cartao-saldo.negativo strong { color: var(--despesa); }
+
+/* Layout em duas colunas */
+.grade { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; }
+.coluna { display: flex; flex-direction: column; gap: 20px; }
+
+.painel {
+  background: var(--painel); border-radius: 12px; padding: 20px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.06);
+}
+.painel h2 { margin: 0 0 14px; font-size: 1.1rem; }
+
+/* Formulário */
+.formulario { display: flex; flex-direction: column; gap: 12px; }
+label { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; color: var(--suave); flex: 1; }
+input, select {
+  font: inherit; color: var(--texto); padding: 9px 10px;
+  border: 1px solid var(--borda); border-radius: 8px; background: #fff;
+}
+input:focus, select:focus { outline: 2px solid var(--primaria); outline-offset: -1px; }
+.linha { display: flex; gap: 12px; }
+
+.alternador { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.alternador button {
+  font: inherit; padding: 9px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--borda); background: #fff; color: var(--suave);
+}
+.alternador .ativo.receita { background: var(--receita); border-color: var(--receita); color: #fff; }
+.alternador .ativo.despesa { background: var(--despesa); border-color: var(--despesa); color: #fff; }
+
+.botao-principal {
+  font: inherit; font-weight: 600; padding: 11px; border: none; border-radius: 8px;
+  background: var(--primaria); color: #fff; cursor: pointer;
+}
+.botao-principal:hover { filter: brightness(1.1); }
+.erro { margin: 0; color: var(--despesa); font-size: 0.85rem; }
+
+/* Filtros */
+.filtros { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+.botao-limpar {
+  font: inherit; padding: 9px 12px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--borda); background: #fff; color: var(--suave);
+}
+
+/* Lista */
+.lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.item {
+  display: flex; align-items: center; gap: 12px; padding: 10px 12px;
+  border: 1px solid var(--borda); border-radius: 8px; border-left-width: 4px;
+}
+.item-receita { border-left-color: var(--receita); }
+.item-despesa { border-left-color: var(--despesa); }
+.item-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.item-info small { color: var(--suave); }
+.item-valor { font-weight: 600; white-space: nowrap; }
+.item-receita .item-valor { color: var(--receita); }
+.item-despesa .item-valor { color: var(--despesa); }
+.botao-remover {
+  border: none; background: transparent; color: var(--suave);
+  cursor: pointer; font-size: 1rem; padding: 4px 6px; border-radius: 6px;
+}
+.botao-remover:hover { background: #fee2e2; color: var(--despesa); }
+
+.vazio { color: var(--suave); margin: 0; }
+.rodape { text-align: center; color: var(--suave); font-size: 0.85rem; margin-top: 28px; }
+
+/* Responsivo */
+@media (max-width: 800px) {
+  .resumo, .grade { grid-template-columns: 1fr; }
+  .linha { flex-direction: column; }
+}
